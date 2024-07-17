@@ -16,8 +16,11 @@ import gsapLogo from './assets/gsap.svg'
 import electronLogo from './assets/electron.svg'
 import { Box, Typography } from '@mui/material'
 import Proficiency from './components/Proficiency'
+import DOTS from 'vanta/dist/vanta.dots.min'
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [vantaEffect, setVantaEffect] = useState()
 
   const proficiencies = [
     {
@@ -93,10 +96,31 @@ function App() {
     },
   ]
 
+  useEffect(() => {
+    if(!vantaEffect){
+      setVantaEffect(DOTS({
+        el: document.getElementsByTagName("body").item(0),
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xff207b,
+        color2: 0xff20ca
+      }))
+    }
+
+    return () => {
+      if (vantaEffect) vantaEffect.destroy()
+    }
+  }, [vantaEffect])
+
   return (
     <>
-      <Box id="profile-info">
-        <Typography sx={{textAlign: 'center'}} variant="h3">
+      <Box id="profile-info" sx={{pt: 3}}>
+        <Typography sx={{textAlign: 'center', color:  'white', mb: 2}} variant="h3">
           About Me
         </Typography>
         <Box sx={{background: 'rgba(0,0,0,.8)', color: 'white', p: 2, borderRadius: '5px', boxShadow: '1px 2px 2px black', maxWidth: '700px', mx:'auto'}}>
