@@ -18,6 +18,7 @@ import { Box, Typography } from '@mui/material'
 import Proficiency from './components/Proficiency'
 import DOTS from 'vanta/dist/vanta.dots.min'
 import { useEffect, useState } from 'react'
+import waves from './assets/wavesOpacity.svg'
 
 function App() {
   const [vantaEffect, setVantaEffect] = useState()
@@ -99,10 +100,10 @@ function App() {
   useEffect(() => {
     if(!vantaEffect){
       setVantaEffect(DOTS({
-        el: document.getElementsByTagName("body").item(0),
+        el: document.getElementById("profile-info"),
         mouseControls: true,
         touchControls: true,
-        gyroControls: false,
+        gyroControls: true,
         minHeight: 200.00,
         minWidth: 200.00,
         scale: 1.00,
@@ -119,39 +120,46 @@ function App() {
 
   return (
     <>
-      <Box id="profile-info" sx={{pt: 3}}>
-        <Typography sx={{textAlign: 'center', color:  'white', mb: 2}} variant="h3">
-          About Me
-        </Typography>
-        <Box sx={{background: 'rgba(0,0,0,.8)', color: 'white', p: 2, borderRadius: '5px', boxShadow: '1px 2px 2px black', maxWidth: '700px', mx:'auto'}}>
-          <Typography color="inherit">
-            I'm <Typography component="span" color="secondary.light" >Bocchii-ii</Typography>, a Software Engineer since 2019. Building, repairing and developing modern applications using various frameworks and programming languages.
+      <Box id="profile-info" sx={{minHeight: '100vh'}}>
+        <Box sx={{pt: 20}}>
+          <Typography sx={{textAlign: 'center', color:  'white', mb: 2}} variant="h3">
+            About Me
           </Typography>
+          <Box sx={{background: 'rgba(0,0,0,.8)', color: 'white', p: 2, borderRadius: '5px', boxShadow: '1px 2px 2px black', maxWidth: '700px', mx:'auto'}}>
+            <Typography color="inherit">
+              I'm <Typography component="span" color="secondary.light" >Bocchii-ii</Typography>, a software engineer since 2019. Building, repairing and developing modern applications using various frameworks and programming languages.
+            </Typography>
 
-          <Typography sx={{mt: 1}} color="inherit">
-            I have experience in API development using Laravel and .NET Framework, build SPA with ReactJS and VueJS, and desktop applications using Electron.
-          </Typography>
+            <Typography sx={{mt: 1}} color="inherit">
+              I have experience in API development using Laravel and .NET Framework, build SPA with ReactJS and VueJS, and desktop applications using Electron.
+            </Typography>
 
-          <Typography sx={{mt: 1}} color="inherit">
-            I specialize in creating tools to solve common problems or to help automate certain tasks.
-            I'm currently teaching students in MFI Polytechnic Institute Inc. to further enhance my communication skills.
-          </Typography>
-          <Box sx={{display: 'flex', gap: 2, flexWrap: 'wrap'}}>
-            <Box sx={{flex:1, mt: 1, p: 2, backdropFilter: 'blur(5px)', background: 'rgba(200,200,200,.1)', borderRadius: '5px', minWidth: '300px'}}>
-              <Typography variant="h5" color="secondary.light" sx={{mb: 2}}>Proficient in</Typography>
-              {proficiencies.map(proficiency => (
-                <Proficiency sx={{mt: .2}} key={proficiency.text} icon={proficiency.icon} text={proficiency.text} />
-              ))}
-            </Box>
-            <Box sx={{flex:1, mt: 1, p: 2, backdropFilter: 'blur(5px)', background: 'rgba(200,200,200,.1)', borderRadius: '5px', minWidth: '300px'}}>
-              <Typography variant="h5" color="secondary.light" sx={{mb: 2}}>Learning</Typography>
-              {learnings.map(proficiency => (
-                <Proficiency sx={{mt: .2}} key={proficiency.text} icon={proficiency.icon} text={proficiency.text} />
-              ))}
+            <Typography sx={{mt: 1}} color="inherit">
+              I specialize in creating tools to solve common problems or to help automate certain tasks.
+              I'm currently teaching students in MFI Polytechnic Institute Inc. to further enhance my communication skills.
+            </Typography>
+            <Box sx={{display: 'flex', gap: 2, flexWrap: 'wrap'}}>
+              <Box sx={{flex:1, mt: 1, p: 2, backdropFilter: 'blur(5px)', background: 'rgba(200,200,200,.1)', borderRadius: '5px', minWidth: '300px'}}>
+                <Typography variant="h5" color="secondary.light" sx={{mb: 2}}>Proficient in</Typography>
+                {proficiencies.map(proficiency => (
+                  <Proficiency sx={{mt: .2}} key={proficiency.text} icon={proficiency.icon} text={proficiency.text} />
+                ))}
+              </Box>
+              <Box sx={{flex:1, mt: 1, p: 2, backdropFilter: 'blur(5px)', background: 'rgba(200,200,200,.1)', borderRadius: '5px', minWidth: '300px'}}>
+                <Typography variant="h5" color="secondary.light" sx={{mb: 2}}>Learning</Typography>
+                {learnings.map(proficiency => (
+                  <Proficiency sx={{mt: .2}} key={proficiency.text} icon={proficiency.icon} text={proficiency.text} />
+                ))}
+              </Box>
             </Box>
           </Box>
-
         </Box>
+      </Box>
+      <Box sx={{background: `linear-gradient(120deg, rgba(138,8,95,1) 0%, rgba(172,79,3,1) 100%)`}}>
+        <Box sx={{background: `url('${waves}')`, height: '100px', backgroundSize: 'cover'}} />
+        <Typography variant="h3" align="center" sx={{color: "white", mt: 2}}>
+          My Projects
+        </Typography>
       </Box>
     </>
   )
