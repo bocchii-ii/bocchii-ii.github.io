@@ -155,12 +155,12 @@ function App() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{background: `linear-gradient(120deg, rgba(138,8,95,1) 0%, rgba(172,79,3,1) 100%)`}}>
+      {/* <Box sx={{background: `linear-gradient(120deg, rgba(138,8,95,1) 0%, rgba(172,79,3,1) 100%)`}}>
         <Box sx={{background: `url('${waves}')`, height: '100px', backgroundSize: 'cover'}} />
         <Typography variant="h3" align="center" sx={{color: "white", mt: 2}}>
           My Projects
         </Typography>
-      </Box>
+      </Box> */}
     </>
   )
 }
